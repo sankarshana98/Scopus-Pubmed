@@ -35,16 +35,10 @@ def retrive():
     data_pub=pd.DataFrame()
     data_sco=pd.DataFrame()
     if ('PubMed' in pub):
-        
-        print('PUBMED '+ q)        
-
         data_pub=integration.pubmeddata(query)
 
     if ('scopus' in pub):
-        
-        print(query)
-        print(str(query))
-        data_sco=integration.scopusdata(str(query))
+       data_sco=integration.scopusdata(str(query))
     
     data_merged=pd.concat([data_pub,data_sco])
     data_merged=data_merged.drop_duplicates('ArticleTitle')
